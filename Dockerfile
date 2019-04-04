@@ -8,6 +8,3 @@ RUN pip3 install -r requirements.txt
 RUN mkdir /mysite
 WORKDIR /mysite
 COPY ./mysite /mysite
-
-RUN adduser -D user
-USER user
