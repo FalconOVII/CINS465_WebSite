@@ -4,6 +4,9 @@ from . import models
 from . import forms
 
 def index(request):
+    return render(request, "index.html")
+
+def test_page(request):
     '''
     if request.method == "POST":
         print("POST")
@@ -32,7 +35,4 @@ def index(request):
         "item_list":n_list,
         "form": form_instance
     }
-    return render(request, "testpage.html", context=context)
-
-def test_page(request):
-    return render(request, "testpage.html")
+    return render(request, "testpage.html",context=context)
