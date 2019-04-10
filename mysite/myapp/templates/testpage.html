@@ -7,7 +7,7 @@
     <li>The item is: {{ item }}</li>
 {% endfor %}
 </ul>
-<form action="/" method="post">
+<form action="/testpage/" method="post">
 {% csrf_token %}
 {{ form }}
 <input type="submit" value="Add Suggestion">
