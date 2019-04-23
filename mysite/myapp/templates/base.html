@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <title>Home Page</title>
+    <title>{% block title %}Home Page{% endblock %}</title>
 </head>
 
 <body>
@@ -28,19 +28,16 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
 
+            <!--Navigation Bar Tabs-->
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="{% url 'myapp:index' %}">Home<span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'testpage' %}">Testpage</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'drink_form' %}">Add New Recipe</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'login' %}">Login</a>
+                        {% if recipe %}
+                        <a class="nav-link" href="{% url 'myapp:detail' recipe.id %}" method ="post">Details</a>
+                        {% endif %}
                     </li>
                     <!--
                     <li class="nav-item dropdown">
@@ -68,7 +65,7 @@
         </div>
     </nav>
 
-    {% block content %}
+    {% block body %}
     {% endblock %}
 
 

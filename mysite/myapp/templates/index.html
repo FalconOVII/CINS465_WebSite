@@ -3,8 +3,9 @@
 {% block body %}
 
     <ul>
-        {% for recipe in object_list %}
-        <li><a href="{% url 'recipe:detail' recipe.id %}">{{ recipe.recipe_title }}</a></li>
+        {% for recipe in all_recipes %}
+        <li><a href="{% url 'myapp:detail' recipe.id %}">{{ recipe.recipe_title }}</a></li>
+        {% endfor %}
     </ul>
 
 {% endblock %}
