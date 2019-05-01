@@ -4,9 +4,28 @@ from . import views
 app_name = 'myapp'
 
 urlpatterns = [
+    # /myapp/
+    url(r'^$', views.index, name='index'),
+    
+    # /myapp/somenumber/
+    url(r'^(?P<recipe_id>[0-9]+)/$', views.detail, name='detail'),
+
+    # /myapp/somenumber/
+    url(r'^(?P<recipe_id>[0-9]+)/favorite/$', views.favorite, name='favorite'),
+]
+
+'''
+from django.conf.urls import url
+from . import views
+
+app_name = 'myapp'
+
+urlpatterns = [
     url(r'^$', views.IndexView.as_view(), name='index'),
     url(r'^(?P<pk>[0-9]+)/$', views.DetailView.as_view(), name='detail'),
 ]
+'''
+
 '''
 url = (r'^login/$', login{'template_name': 'account/login.html'})
     url = (r'^logout/$', logout{'template_name': 'account/login.html'})

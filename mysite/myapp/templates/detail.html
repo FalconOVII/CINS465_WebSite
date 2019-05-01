@@ -1,11 +1,12 @@
-{% extends 'base.html' %}
-{% block title %}Recipe Details{% endblock %}
+<img src="{{ recipe.recipe_logo }}">
 
-{% block body %}
-<!--
-    <img src="{{ recipe.recipe_logo }}" style"width: 250px;">
--->
-    <h1>{{ recipe.recipe_title }}</h1>
-    <h2>{{ recipe.recipe_discription }}</h2>
+<h1>{{ recipe.recipe_title }}</h1>
 
-{% endblock %}
+<ul>
+    {% for mix in recipe.mix_set.all %}
+    <h2>Ingredients</h2>
+    <li>{{ mix.ingredients }}</li>
+    <h2>Instructions</h2>
+    <li>{{ mix.directions }}</li>
+    {% endfor %}
+</ul>

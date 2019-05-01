@@ -1,11 +1,10 @@
-{% extends 'base.html' %}
-
-{% block body %}
-
-    <ul>
+{% if all_recipes %}
+<h3>Here all my Recipes:</h3>
+<ul>
         {% for recipe in all_recipes %}
         <li><a href="{% url 'myapp:detail' recipe.id %}">{{ recipe.recipe_title }}</a></li>
         {% endfor %}
-    </ul>
-
-{% endblock %}
+</ul>
+{% else %}
+    <h3>You Don't Have any Recipes</h3>
+{% endif %}

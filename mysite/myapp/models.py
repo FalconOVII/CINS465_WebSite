@@ -17,7 +17,7 @@ class Mix(models.Model):
     is_favorite = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.mix_title
+        return str(self.mix_title)
 
 '''
 class Suggestion(models.Model):
