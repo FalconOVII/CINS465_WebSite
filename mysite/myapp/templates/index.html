@@ -1,18 +1,45 @@
 {% extends 'base.html' %}
-
 {% block title %}Random Recipes{% endblock %}
 
 {% block body %}
+<div class="recipe-container container-fluid">
+    <!--Recipe Block-->
+    <div class="row">
+        <div class="col-sm-12">
+            <h3></h3>
+        </div>
+        {% if all_recipes %}
+        {% for recipe in all_recipes %}
+        <div class="col-sm-4 col-lg-2">
+            <div class="thumbnail">
+                <a href="{% url 'myapp:detail' recipe.id %}">
+                    <img src="{{ recipe.recipe_logo }}" class="img-responsive">
+                </a>
+                <div class="caption">
+                    <h2>{{ recipe.recipe_title }}</h2>
+                    <h4>Category: {{ recipe.category }}</h4>
 
-{% if all_recipes %}
-<h3>Here all my Recipes:</h3>
-<ul>
-    {% for recipe in all_recipes %}
-    <li><a href="{% url 'myapp:detail' recipe.id %}">{{ recipe.recipe_title }}</a></li>
-    {% endfor %}
-</ul>
-{% else %}
-<h3>You Don't Have any Recipes</h3>
-{% endif %}
-
+                    <!--View Recipe-->
+                    <a href="{% url 'myapp:detail' recipe.id %}" class="btn btn-primary btn-sm" role="button">ViewRecipe</a>
+                    
+                    <!-- Favorite Album -->
+                    <a href="#" class="btn btn-default btn-sm btn-favorite" role="button">
+                            <span class="glyphicon glyphicon-star"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% cycle '' '' '' '' '' '<div class="clearfix visible-lg"></div>' %}
+        {% endfor %}
+        {% else %}
+        <div class="col-sm-12">
+            <br>
+            <a href="{#}">
+                <button type="button" class="btn btn-success">
+                    <span class="glyphicon glyphicon-plus"></span>&nbsp; Add Recipe</button>
+            </a>
+        </div>
+        {% endif %}
+    </div>
+</div>
 {% endblock %}

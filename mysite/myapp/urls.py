@@ -5,36 +5,11 @@ app_name = 'myapp'
 
 urlpatterns = [
     # /myapp/
-    url(r'^$', views.index, name='index'),
+    url(r'^$', views.IndexView.as_view(), name='index'),
     
     # /myapp/somenumber/
-    url(r'^(?P<recipe_id>[0-9]+)/$', views.detail, name='detail'),
-
-    # /myapp/somenumber/
-    url(r'^(?P<recipe_id>[0-9]+)/favorite/$', views.favorite, name='favorite'),
-]
-
-'''
-from django.conf.urls import url
-from . import views
-
-app_name = 'myapp'
-
-urlpatterns = [
-    url(r'^$', views.IndexView.as_view(), name='index'),
     url(r'^(?P<pk>[0-9]+)/$', views.DetailView.as_view(), name='detail'),
+    
+    # /myapp/recipe/add/
+    url(r'^recipe/add/$', views.RecipeCreate.as_view(), name='recipe_add'),
 ]
-'''
-
-'''
-url = (r'^login/$', login{'template_name': 'account/login.html'})
-    url = (r'^logout/$', logout{'template_name': 'account/login.html'})
-
-    path('', views.index, name='home'),
-    path('testpage/', views.test_page, name='testpage'),
-    path('drink_form/', views.drink_form, name='drink_form'),
-
-    # /recipe/
-
-    # /recipe/1/
-'''

@@ -1,20 +1,22 @@
 from django.db import models
-# from django.core.urlresolvers import reverse
+from django.urls import reverse
 
 class Recipe(models.Model):
     recipe_title = models.CharField(max_length=250)
     category = models.CharField(max_length=500)
     description = models.CharField(max_length=250)
     recipe_logo = models.CharField(max_length=1000)
+    is_favorite = models.BooleanField(default=False)
 
+    def get_absolute_url(self):
+        return reverse('myapp:detail', kwargs={'pk': self.pk})
     def __str__(self):
         return self.recipe_title + ' - ' + self.category
 
 class Mix(models.Model):
     mix_title = models.ForeignKey(Recipe, on_delete=models.CASCADE)
     ingredients = models.CharField(max_length=250)
-    directions = models.CharField(max_length=250)
-    is_favorite = models.BooleanField(default=False)
+    directions = models.CharField(max_length=1000)
 
     def __str__(self):
         return str(self.mix_title)
