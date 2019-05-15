@@ -18,6 +18,7 @@
                 <div class="caption">
                     <h2>{{ recipe.recipe_title }}</h2>
                     <h4>Category: {{ recipe.category }}</h4>
+                    <h4>Percentage: {{ recipe.alcohol_percentage }}%</h4>
 
                     <!--View Recipe-->
                     <a href="{% url 'myapp:detail' recipe.id %}" class="btn btn-primary btn-sm" role="button">ViewRecipe</a>

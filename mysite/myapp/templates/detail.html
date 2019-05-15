@@ -3,16 +3,16 @@
 {% block title %}Recipe Description{% endblock %}
 
 {% block body %}
-
+<div align="center">
 <img src="{{ recipe.recipe_logo.url }}" style="width: 250px;">
 
 <h1>{{ recipe.recipe_title }}</h1>
 
-    {% for mix in recipe.mix_set.all %}
     <h2>Ingredients</h2>
-    <li>{{ mix.ingredients }}</li>
+    <li>{{ recipe.ingredients }}</li>
     <h2>How-To-Mix</h2>
-    <body>{{ mix.directions }}</body>
-    {% endfor %}
-
+    <p>{{ recipe.instructions }}</p>
+    <h2>Alcohol Percentage</h2>
+    <p>{{ recipe.alcohol_percentage }} %</p>
+</div>
 {% endblock %}
