@@ -1,11 +1,15 @@
 from django.db import models
 from django.urls import reverse
 
+
 class Recipe(models.Model):
     recipe_title = models.CharField(max_length=250)
     category = models.CharField(max_length=500)
     description = models.CharField(max_length=250)
-    recipe_logo = models.CharField(max_length=1000)
+    ingredients = models.CharField(max_length=250)
+    instructions = models.CharField(max_length=500)
+    alcohol_percentage = models.IntegerField(default=0)
+    recipe_logo = models.FileField()
     is_favorite = models.BooleanField(default=False)
 
     def get_absolute_url(self):
@@ -13,15 +17,19 @@ class Recipe(models.Model):
     def __str__(self):
         return self.recipe_title + ' - ' + self.category
 
-class Mix(models.Model):
+'''
+
+ingredients = models.CharField(max_length=250)
+    instructions = models.CharField(max_length=250)
+
+class Mix(Recipe):
     mix_title = models.ForeignKey(Recipe, on_delete=models.CASCADE)
-    ingredients = models.CharField(max_length=250)
-    directions = models.CharField(max_length=1000)
+    alcohol_percentage = models.IntegerField(default=0)
 
     def __str__(self):
         return str(self.mix_title)
 
-'''
+
 class Suggestion(models.Model):
     suggestion_field = models.CharField(max_length=250)
 
