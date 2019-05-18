@@ -12,9 +12,6 @@ urlpatterns = [
 
     # /myapp/somenumber/
     url(r'^(?P<pk>[0-9]+)/$', views.DetailView.as_view(), name='detail'),
-
-    # /myapp/somenumber/
-    url(r'^chat/$', views.Chat.as_view(), name='chat'),
     
     # /myapp/recipe/add/
     url(r'^recipe/add/$', views.RecipeCreate.as_view(), name='recipe_add'),
@@ -24,4 +21,8 @@ urlpatterns = [
 
     # /myapp/recipe/number/delete/
     url(r'^recipe/(?P<pk>[0-9]+)/delete/$', views.RecipeDelete.as_view(), name='delete_recipe'),
+
+    # /myapp/chat/
+    url(r'^chat/$', views.chat, name='chat'),
+    url(r'^chat/(?P<room_name>[^/]+)/$', views.room, name='room'),
 ]

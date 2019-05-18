@@ -25,13 +25,14 @@ SECRET_KEY = '9!!69m!949tl(-9_z9l_9*1ay*0o^(-sqn=2gds%h7&e!kf(q)'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['35.236.9.12']
-
+ALLOWED_HOSTS = ['127.0.0.1']
+# '35.236.9.12', 
 
 # Application definition
 
 INSTALLED_APPS = [
     'myapp',
+    #'channels',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -69,6 +70,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'mysite.wsgi.application'
+ASGI_APPLICATION = 'mysite.routing.application'
 
 
 # Database
