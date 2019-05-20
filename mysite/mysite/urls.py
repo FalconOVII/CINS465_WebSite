@@ -23,7 +23,7 @@ from myapp.urls import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('myapp/', include('myapp.urls')),
-    re_path(r'^.*', views.IndexView.as_view(), name='index')
+    #re_path(r'^.*', views.IndexView.as_view(), name='index')
 ]
 
 if settings.DEBUG:
