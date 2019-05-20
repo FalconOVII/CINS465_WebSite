@@ -9,6 +9,9 @@ from django.contrib.auth import authenticate, login
 from .models import Recipe
 from .forms import UserForm
 
+from django.utils.safestring import mark_safe
+import json
+
 class IndexView(generic.ListView):
     template_name = 'index.html'
     context_object_name = 'all_recipes'
@@ -33,8 +36,8 @@ class RecipeDelete(DeleteView):
     model = Recipe
     success_url = reverse_lazy('myapp:index')
 
-class Chat(generic.DetailView):
-    template_name = "chat.html"
+#class Chat(generic.DetailView):
+#    template_name = "chat.html"
 
 class UserFormView(View):
     form_class = UserForm
@@ -68,3 +71,11 @@ class UserFormView(View):
                     return redirect('myapp:index')
         
         return render(request, self.template_name, {'form': form})
+
+def chatform(request):
+    return render(request, 'chatform.html', {})
+
+def room(request, room_name):
+    return render(request, 'room.html', {
+        'room_name_json': mark_safe(json.dumps(room_name))
+    })
