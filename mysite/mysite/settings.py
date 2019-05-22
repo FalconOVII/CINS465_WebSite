@@ -25,7 +25,7 @@ SECRET_KEY = '9!!69m!949tl(-9_z9l_9*1ay*0o^(-sqn=2gds%h7&e!kf(q)'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['35.236.9.12', '127.0.0.1']
+ALLOWED_HOSTS = ['35.236.9.12']
 
 
 # Application definition
@@ -76,7 +76,7 @@ CHANNEL_LAYERS = {
     'default': {
         'BACKEND': 'channels_redis.core.RedisChannelLayer',
         'CONFIG': {
-            "hosts": [('127.0.0.1', 6379)],
+            "hosts": [('35.236.9.12', 6379)],
         },
     },
 }
